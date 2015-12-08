@@ -3,7 +3,6 @@
   "singleton": false,
   "category": "complex_applications",
   "author": "Egor Eremeev",
-//  "homepage": "http://razberry.z-wave.me",
   "icon": "icon.png",
   "moduleName": "SensoredSmartLight",
   "version": "1.0",
