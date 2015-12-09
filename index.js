@@ -53,22 +53,23 @@ SensoredSmartLight.prototype.init = function (config) {
     this.sensorTriggered = function (Sensor) {
         // Now Time in minutes
         var nowDate = new Date();
-        var nowTime = (nowDate.getHours()+3) * 60 + nowDate.getMinutes();
-
-
-        //Максимум люкс, которые выдает лампочка
-        var lightbulbLumens = this.config.RoomParams.LightbulbLumens;
-        var roomArea = this.config.RoomParams.RoomArea;
-        var maxBulbLux = lightbulbLumens/roomArea;
-
-        //Нужный уровень лампочки в процентах
-        var neededLevel;
-
-        var currentLuminosityLevelLux = self.controller.devices.get(self.config.LuminositySensor).get("metrics:level");
-        var neededLevelLux;
+        var nowTime = nowDate.getHours() * 60 + nowDate.getMinutes();
 
         // Check Motion Sensor
         if (Sensor.get("metrics:level") == "on") {
+
+            //Максимум люкс, которые выдает лампочка
+            var lightbulbLumens = this.config.RoomParams.LightbulbLumens;
+            var roomArea = this.config.RoomParams.RoomArea;
+            var maxBulbLux = lightbulbLumens/roomArea;
+
+            //Нужный уровень лампочки в процентах
+            var neededLevel;
+
+            //var currentLuminosityLevelLux = self.controller.devices.get(self.config.LuminositySensor).get("metrics:level");
+            var currentLuminosityLevelLux = 40;
+            var neededLevelLux;
+
 
             //MORNING TIME
             if (nowTime >= self.morningStartTime && nowTime <= self.morningEndTime) { neededLevelLux = morningLevelLux; }
@@ -82,11 +83,8 @@ SensoredSmartLight.prototype.init = function (config) {
                 neededLevel = (diffreneceInLux*100)/maxBulbLux;
             }
 
-            if(neededLevel>0) {
-                self.controller.devices.get(self.config.Dimmer).performCommand("exact", { level: neededLevel });
-                self.controller.devices.get(self.config.Dimmer).performCommand("on");
-            }
-
+            self.controller.devices.get(self.config.Dimmer).performCommand("exact", { level: neededLevel });
+            self.controller.devices.get(self.config.Dimmer).performCommand("on");
 
             //AutoOff
             // If timeout setted, start timer autooff

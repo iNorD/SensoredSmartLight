@@ -18,17 +18,17 @@
     "LuminositySensor": null,
     "Dimmer": null,
     "Level": {
-      "MorningLevel": "25",
-      "DayLevel": "40",
-      "NightLevel": "33"
+      "MorningLevel": 25,
+      "DayLevel": 40,
+      "NightLevel": 30
     },
     "Morning": {
       "MorningTimeStart": "04:00",
       "MorningTimeEnd": "10:00"
     },
     "RoomParams": {
-      "LightbulbLumens": "600",
-      "RoomArea": "20"
+      "LightbulbLumens": 600,
+      "RoomArea": 20
     },
     "Day": {
       "DayTimeStart": "10:00",
@@ -93,6 +93,19 @@
           }
         }
       },
+      "Day": {
+        "type": "object",
+        "properties": {
+          "DayTimeStart": {
+            "type": "string",
+            "required": true
+          },
+          "DayTimeEnd": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
       "RoomParams": {
         "type": "object",
         "properties": {
@@ -106,19 +119,6 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 99,
-            "required": true
-          }
-        }
-      },
-      "Day": {
-        "type": "object",
-        "properties": {
-          "DayTimeStart": {
-            "type": "string",
-            "required": true
-          },
-          "DayTimeEnd": {
-            "type": "string",
             "required": true
           }
         }
@@ -158,7 +158,8 @@
         "fields": {
           "MorningLevel": {
             "label": "__l_MorningLevel__"
-          },"DayLevel": {
+          },
+          "DayLevel": {
             "label": "__l_DayLevel__"
           },
           "NightLevel": {
@@ -178,7 +179,7 @@
         }
       },
       "Morning": {
-        "label": "__l_Day__",
+        "label": "__l_Morning__",
         "fields": {
           "MorningTimeStart": {
             "label": "__l_DayTimeStart__",
@@ -217,8 +218,7 @@
       },
       "timeout": {
         "label": "__l_timeout__",
-        "helper":"__h_timeout__"
-
+        "helper": "__h_timeout__"
       }
     }
   }
