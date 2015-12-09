@@ -22,13 +22,13 @@
       "DayLevel": 40,
       "NightLevel": 30
     },
-    "Morning": {
-      "MorningTimeStart": "04:00",
-      "MorningTimeEnd": "10:00"
-    },
     "RoomParams": {
       "LightbulbLumens": 600,
       "RoomArea": 20
+    },
+    "Morning": {
+      "MorningTimeStart": "04:00",
+      "MorningTimeEnd": "10:00"
     },
     "Day": {
       "DayTimeStart": "10:00",
@@ -80,6 +80,23 @@
           }
         }
       },
+      "RoomParams": {
+        "type": "object",
+        "properties": {
+          "LightbulbLumens": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "required": true
+          },
+          "RoomArea": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99,
+            "required": true
+          }
+        }
+      },
       "Morning": {
         "type": "object",
         "properties": {
@@ -102,23 +119,6 @@
           },
           "DayTimeEnd": {
             "type": "string",
-            "required": true
-          }
-        }
-      },
-      "RoomParams": {
-        "type": "object",
-        "properties": {
-          "LightbulbLumens": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 1000,
-            "required": true
-          },
-          "RoomArea": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 99,
             "required": true
           }
         }

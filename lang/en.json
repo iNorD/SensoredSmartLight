@@ -5,9 +5,11 @@
   "l_LuminositySensor": "Luminosity Sensor",
   "l_Dimmer": "Dimmer",
   "l_Level": "Dimmer levels for day and night",
-  "l_DayLevel": "Day Level",
-  "l_NightLevel": "Night Level",
+  "l_MorningLevel":"Morning light level, lux",
+  "l_DayLevel": "Day light Level, lux",
+  "l_NightLevel": "Night light Level, lux",
   "l_Day": "The time interval when the light is switched on for Day Level",
+  "l_RoomParams":"Room params",
   "timeFormat": "hh:mm",
   "l_DayTimeStart": "Start",
   "l_DayTimeEnd": "End"
